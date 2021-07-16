@@ -1,21 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
+//Root of app 
+
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import NavigatorStack from './stacks/NavigatorStack';
+import { useFonts } from 'expo-font';
 
 export default function App() {
+
+  //font-loading
+  const [loaded] = useFonts({
+    'roundBold':require('./assets/fonts/SF-Pro-Rounded-Bold.otf'),
+    'roundRegular':require('./assets/fonts/SF-Pro-Rounded-Regular.otf'),
+    'textRegular':require('./assets/fonts/SF-Pro-Text-Regular.otf'),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigatorStack/>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
